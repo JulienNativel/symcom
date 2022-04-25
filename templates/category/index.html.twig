@@ -8,7 +8,7 @@
             <h1 class="text-center text-white bg-dark rounded shadow-lg my-5">Toutes les catégories</h1>
             <ul class="list-group list-group-light list-group-small">
                 {% for c in categories.findAll() %}
-                    <li class="list-group-item"><a class="nav-link text-center" href=""> {{c.name}}</a></li>
+                    <li class="list-group-item"><a class="nav-link text-center" href="{{path('app_product_category', {'id': c.id})}}"> {{c.name}}</a></li>
                 {% endfor %}
             </ul>
         </div>
