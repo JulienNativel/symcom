@@ -34,7 +34,7 @@ class ProductFixtures extends Fixture
 
                     $manager->persist($category);
 
-            for ($i = 0; $i < 12; $i++){
+            for ($i = 0; $i <= mt_rand(5, 15); $i++){
 
                 // A chaque tour de boucle on crée une nouvelle instance de notre classe entity Product (un nouveau produit)
                 $product = new Product();
