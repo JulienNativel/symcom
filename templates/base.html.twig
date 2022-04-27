@@ -30,6 +30,19 @@
         </header>
 
         <main class="container-fluid main_container p-0">
+            {% for rubrique, messages in app.flashes  %}
+                {# 'app' est une variable twig qui contient ttes les infos stockées en session #}
+                {# 'flashes' permet de stocker des messages à destination de l'utilisateur sur ttes les pages de l'application. On est obligé de boucler car on peut avoir plrs messages stockés #}
+                <div class="row justify-content-center my-5">
+                    <div class="alert alert-{{ rubrique }} alert-dismissible col-md-5 fade show mx-auto" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        {% for message in messages %}
+                            <strong>{{ message }}</strong>
+                        {% endfor %}
+                    </div>
+                </div>   
+            {% endfor %}
+
             {% block body %}
             {% endblock %}
         </main>
