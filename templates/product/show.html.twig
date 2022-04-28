@@ -23,6 +23,32 @@
             <a class="btn col-3 m-2 btn-light" href="{{path('app_product')}}">Retour</a>
         </div>
     </div>
+    <h4 class="my-5 text-center">Votre avis compte</h4>
+    {% if app.user %}
+        <div class="row bg-light mb-4">
+            {{ form_start(formComment, {'attr' : {'class' : 'col-md-5 mx-auto'}}) }}
+                {{ form_row(formComment.author, {'value':''}, {'attr' : {'placeholder' : 'Entrer un nom d\'auteur', 'maxlength' : false, 'pattern' : false}, 'label' : "Auteur"}) }}
+                {{ form_row(formComment.content, {'value':''}, { 'label' : "Commentaire" },
+                {'attr' : {'rows' : 12 }}) }}
+                <div class="row justify-content-center"> 
+                    <button type="submit" class="btn btn-primary col-3">Poster</button>
+                </div>
+            {{ form_end(formComment) }}
+        </div>
+    {% endif %}
+    <div class="row bg-light mb-4" id="comment-overflow">
+        <h6 class="text-center py-2 fw-bolder">Avis</h6>
+        {% for comment in product.comments %}
+            <div class="col-md-4 py-2">
+                <span class="text-success"><strong>{{ comment.author }}</strong></span>
+                <small class="text-muted font-italic">Posté le {{ comment.createdat|date('d/m/Y') }} à {{ comment.createdat|date('H:i:s') }}</small>
+            </div>
+            <div class="col-md-4 py-2">
+                {{ comment.content|striptags }}
+            </div>
+            <hr class="col-md-4 bg-light mx-auto py-2">
+        {% endfor %}
+    </div>
 </div>
 
 {% endblock %}

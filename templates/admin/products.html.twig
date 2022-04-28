@@ -9,7 +9,10 @@
 
     <div class="container my-5">
         <h2 class="text-center text-white bg-dark title mx-auto">Tous les articles en base</h2>
-        <table class="table table-stripper col-md-6">
+        <div class="row justify-content-center">
+            <a href="{{ path('app_admin_products_create') }}" class="btn btn-primary col-2 my-3">Ajouter un produit</a>
+        </div>
+        <table class="table table-striped col-md-6 table-responsive table-bordered">
             <tr class="text-center">
                 {% for row in colonnes %}
                     <th>{{ row|upper }}</th>
@@ -27,8 +30,8 @@
                     <td class="align-middle"><img class="img-fluid" src="{{ p.picture }}"></td>
                     <td class="align-middle">{{ p.category.slug }}</td>
                     <td class="align-middle">
-                        <a href="" class="btn btn-small btn-warning my-2"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="" class="btn btn-small btn-danger my-2"><i class="fa-solid fa-trash"></i></a>
+                        <a href="{{path('app_admin_products_edit', {'id': p.id})}}" class="btn btn-small btn-warning my-2"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="{{path('app_admin_products', {'id': p.id})}}" class="btn btn-small btn-danger my-2"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
             {% endfor %}

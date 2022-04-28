@@ -9,3 +9,12 @@ html, body {
 h1 {
     text-align: center;
 }
+
+#comment-overflow {
+    overflow: hidden;
+    height: 20vh;
+}
+
+#comment-overflow:hover {
+    overflow: scroll !important;
+}

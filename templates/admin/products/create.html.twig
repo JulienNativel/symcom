@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}BackOffice: Ajouter un produit{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="display-4 text-center text-white bg-dark shadow-lg rounded col-7 mx-auto"></h1>
+
+        <div class="row justify-content-center my-5">
+            {{ form_start(form, {'attr' : {'class' : 'col-md-5 mx-auto'}}) }}
+                {{ form_row(form.title, {'attr' : {'placeholder' : 'Saisir un titre', 'maxlength' : false, 'pattern' : false}, 'label' : "Nom du produit"}) }}
+                {{ form_row(form.content, { 'label' : "Description du produit" },
+                {'attr' : {'rows' : 12 }}) }} {# on limite la taille en largeur (12 lignes) #}
+                {{ form_row(form.price, { 'label' : "Prix du produit" }) }}
+                {{ form_row(form.picture, { 'label' : "Photo du produit" }) }}
+                {{ form_row(form.category, { 'label' : "Catégorie du produit" }) }}
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+                <a class="btn col-3 m-2 btn-light" href="{{path('app_admin_products')}}">Retour</a>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
